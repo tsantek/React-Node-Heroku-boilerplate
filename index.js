@@ -10,7 +10,7 @@ app.get('/api', (req, res) =>{
     res.send("TEST")
 })
 
-if(process.env.NODE_ENV === "produciton"){
+if(process.env.NODE_ENV === "production"){
     app.use(express.static('client/build'));
 
     app.get('*', (req, res)=>{
