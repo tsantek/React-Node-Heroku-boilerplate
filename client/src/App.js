@@ -1,14 +1,26 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 
 function App() {
-  return (
+  const [user, setuser] = useState(null)
+
+    // hook for componentDidMount Update 
+  useEffect(()=>{
+    axios.get('/api')
+    .then(response => {
+      setuser(response.data)
+    })
+  })
+
+
+  return user && (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {JSON.stringify(user)}
         </p>
         <a
           className="App-link"
